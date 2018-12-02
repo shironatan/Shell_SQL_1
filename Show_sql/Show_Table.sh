@@ -27,7 +27,7 @@ Account(){
 	local login_user
 	if [ ! -e $file ];
 	then
-		Add
+		Change
 	fi
 	echo "/* ログインユーザー */"
 	cat $file | grep 'user = ' | awk '{print $3}'
