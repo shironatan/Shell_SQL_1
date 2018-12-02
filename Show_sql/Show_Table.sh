@@ -86,12 +86,11 @@ Show_Table(){
 }
 #配列の中身を縦に表示
 Show_array(){
-	local i=0
-	local e	
+	local e
+	unset ARRAY[0]	
 	for e in "${ARRAY[@]}"
 	do
 		echo "*** ${e}"
-		let i++
 	done
 }
 
