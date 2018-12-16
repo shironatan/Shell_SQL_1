@@ -6,7 +6,6 @@ Change(){
 	local username
 	local password
 	local hostname
-
 	echo "ユーザーを新規作成・変更"
 	read -p "ユーザー名 : " username </dev/tty
 	read -s -p "パスワード : " password </dev/tty
@@ -25,14 +24,14 @@ Change(){
 Account(){
 	local file=".my.cnf"
 	local login_user
-	if [ ! -e $file ];
+	if [ ! -e $file ]
 	then
 		Change
 	fi
 	echo "/* ログインユーザー */"
 	cat $file | grep 'user = ' | awk '{print $3}'
 	read -p"ユーザー名を指定[変更:change] : " login_user </dev/tty
-	if [ "$login_user" = "change" ];
+	if [ "$login_user" = "change" ]
 	then
 		Change
 		Account
@@ -47,7 +46,8 @@ Connect(){
 	local file=".my.cnf"
 	local ret
 	ret=`mysql --defaults-extra-file=./$file -u $USER -e"select user();"`
-	if [ $? -eq 1 ]; then
+	if [ $? -eq 1 ]
+	then
                 echo "MYSQLに接続できませんでした。"
                 exit 1
 	else
@@ -61,7 +61,7 @@ Show_DB(){
 	local file=".my.cnf"
 	local ret
 	ret=`mysql --defaults-extra-file=./$file -u $USER -e "show databases;"`
-	if [ $? -gt 0 ];
+	if [ $? -gt 0 ]
 	then
 		exit 0
 	fi
@@ -74,7 +74,7 @@ Show_Table(){
 	local file=".my.cnf"
 	local ret
 	ret=`mysql --defaults-extra-file=./$file -u $USER -e "use $1;show tables;"`
-	if [ $? -gt 0 ];
+	if [ $? -gt 0 ]
        	then
 		echo "存在しないデータベース名です"
 		echo "最初からやり直してください"
