@@ -1,4 +1,5 @@
 # Shell_SQL_1
+コードの簡単な説明や実行結果：http://467.hatenablog.com/entry/2018/12/20/092240
 1./Show_sql/Login.sh
 mysqlにユーザー名を指定してログインできます。
 2./Show_sql/Show_DB.sh
